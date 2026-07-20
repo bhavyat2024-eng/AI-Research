@@ -10,15 +10,17 @@ from dotenv import load_dotenv
 import os
 from flask import Flask, request
 from flask_cors import CORS
-from supabase import create_client, Client
-import supabase
 from flask import render_template
 import json
+import torch
+
+torch.set_grad_enabled(False)
 
 app = Flask(__name__)
 #app2 = Flask(__name__)
 CORS(app)
 #CORS(app2)
+model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
 @app.route("/queries", methods=["POST"])
 def queries():
     pdf = request.files["pdf"]
@@ -137,7 +139,6 @@ def queries():
     pattern = "|".join(re.escape(chunk) for chunk in chunks)
     pieces = re.split(pattern, text)
 
-    model = SentenceTransformer("all-MiniLM-L6-v2")
     query = "Represent this sentence for searhching relevant passages: " + "What is the impact of artificial intelligence on the business industry?"
     user_query = request.form["question"]
     document = pieces
@@ -306,6 +307,8 @@ def queries():
     ai_answer = response_data["answer"]
 
     mla_citation = response_data["citation"]
+
+    doc.close()
 
     return {
 
