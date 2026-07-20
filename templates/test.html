@@ -717,6 +717,143 @@ p {
         transform: translate(926px, -1040px);
     }
 
+    .footer{
+
+    margin-top:80px;
+
+    background:
+    rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(15px);
+
+    border-top:
+    1px solid rgba(255,255,255,0.15);
+
+    color:white;
+
+}
+
+
+.footer-container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:50px 40px;
+
+    display:grid;
+
+    grid-template-columns:
+    2fr 1fr 1.5fr 1fr;
+
+    gap:50px;
+
+}
+
+
+.footer-brand h2{
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+}
+
+
+.footer-brand p{
+
+    color:rgba(255,255,255,.75);
+
+    line-height:1.6;
+
+    max-width:350px;
+
+}
+
+
+
+.footer-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+
+.footer-section h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+
+.footer-section a{
+
+    color:
+    rgba(255,255,255,.75);
+
+    text-decoration:none;
+
+    transition:.25s;
+
+}
+
+
+.footer-section a:hover{
+
+    color:white;
+
+    transform:translateX(5px);
+
+}
+
+
+.footer-section p{
+
+    color:
+    rgba(255,255,255,.75);
+
+    margin:0;
+
+}
+
+
+
+.footer-bottom{
+
+    border-top:
+    1px solid rgba(255,255,255,.12);
+
+    text-align:center;
+
+    padding:20px;
+
+    color:
+    rgba(255,255,255,.6);
+
+    font-size:14px;
+
+}
+
+
+
+@media(max-width:900px){
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
 </style>
 
 <body>
@@ -761,28 +898,75 @@ p {
         <button id="signUp" onclick="Authentication()">Sign Up</button>
     </div>
 
-    <div class="footer">
-        <p class="footerTitle">AI Research</p>
-        <br>
-        <p class="footerSub">Analyze papers. Discover insights. Learn smarter.</p>
-        <br>
-        <p class="footerP">Product</p>
-        <p class="footerContent">• AI Summaries</p>
-        <p class="footerContent">• Quizzes</p>
-        <p class="footerContent">• Diagrams</p>
-        <p class="footerCont">• Q&A</p>
-        <p class="footerCont">• Downloads</p>
-        <p class="footerCont">• Study Guide Generation</p>
-        <p class="footerR">Resources</p>
-        <p class="footerCon">• About Us</p>
-        <p class="footerL">Legal</p>
-        <div class="footerCo">
-        <a href="{{ url_for('privacy')}}">• Privacy Policy</a>
-        <p class="foot">© 2026 AI Research Assistant</p>
+    <footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+
+            <h2>AIResearch</h2>
+
+            <p>
+                Transform research papers into insights with
+                AI-powered summaries, citations, notes, and study tools.
+            </p>
+
         </div>
+
+
+        <!-- Features -->
+        <div class="footer-section">
+
+            <h3>Platform</h3>
+
+            <a href="/features">Features</a>
+            <a href="/Notes">Notes</a>
+            <a href="/profile">Dashboard</a>
+            <a href="/about">About Us</a>
+
+        </div>
+
+
+        <!-- Technology -->
+        <div class="footer-section">
+
+            <h3>Technology</h3>
+
+            <p>Artificial Intelligence</p>
+            <p>Natural Language Processing</p>
+            <p>Semantic Search</p>
+            <p>Cloud Infrastructure</p>
+
+        </div>
+
+
+        <!-- Team -->
+        <div class="footer-section">
+
+            <h3>Developed By</h3>
+
+            <p>Bhavya Tripathy</p>
+            <p>Greyson Dobbels</p>
+            <p>Muhammad Ammar</p>
+            <p>Romi Kadiam</p>
+
+        </div>
+
+
     </div>
 
-    <img src="LOGOS.png">
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 AIResearch.
+        </p>
+
+    </div>
+
+</footer>
+
 
 </body>
 <script type="module" src="{{ url_for('static', filename='script.js') }}"></script>
