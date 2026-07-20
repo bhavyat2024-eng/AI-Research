@@ -12,15 +12,23 @@ from flask import Flask, request
 from flask_cors import CORS
 from flask import render_template
 import json
-import torch
+model = None
 
-torch.set_grad_enabled(False)
+def get_model():
+    global model
+
+    if model is None:
+        model = SentenceTransformer(
+            "paraphrase-MiniLM-L3-v2"
+        )
+
+    return model
 
 app = Flask(__name__)
 #app2 = Flask(__name__)
 CORS(app)
 #CORS(app2)
-model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
+model = None #change later
 @app.route("/queries", methods=["POST"])
 def queries():
     pdf = request.files["pdf"]
